@@ -1,0 +1,161 @@
+@charset "UTF-8";
+
+/* ===== Body & Background ===== */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    font-family: "Montserrat", "Noto Sans JP", sans-serif;
+    color: #4b3f2f;
+    overflow-x: hidden;
+    position: relative;
+
+    /* Gradient + soft sakura pink overlay */
+    background: linear-gradient(to right, #fff3e0 0%, #ffe4e1 60%, #f8e1eb 100%);
+}
+
+/* Soft light / bokeh effect */
+body::before,
+body::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(180px);
+    opacity: 0.15;
+    z-index: 0;
+}
+
+body::before {
+    width: 500px;
+    height: 500px;
+    background: #ffe0e0;
+    top: -150px;
+    right: -150px;
+    box-shadow: 0 0 200px 80px rgba(255, 192, 203, 0.15);
+}
+
+body::after {
+    width: 400px;
+    height: 400px;
+    background: #fff0f5;
+    bottom: -120px;
+    left: -120px;
+    box-shadow: 0 0 180px 60px rgba(255, 182, 193, 0.15);
+}
+
+/* Optional sakura overlay */
+body::after {
+    background-image: url('../image/sakura_overlay.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    opacity: 0.08;
+}
+
+/* ===== Container ===== */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 60px auto;
+    padding: 20px 30px;
+    background: rgba(255,255,255,0.55);
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    box-shadow: 
+        0 0 45px rgba(225, 180, 120, 0.3),
+        inset 0 0 35px rgba(255, 235, 205, 0.2);
+}
+
+/* ===== Title ===== */
+.title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-align: center;
+    color: #b37a4c;
+    margin-bottom: 10px;
+    text-shadow: 0 0 8px rgba(255,220,180,0.3);
+}
+
+.subtitle {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #c7976b;
+    margin-bottom: 40px;
+}
+
+/* ===== Checkout Table ===== */
+.pay-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 30px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    border-radius: 15px;
+    overflow: hidden;
+    background-color: #fffaf6;
+}
+
+.pay-table thead th {
+    background: linear-gradient(90deg, #ffe0e0, #ffccd5);
+    color: #4b3f2f;
+    font-weight: 600;
+    padding: 14px;
+    text-align: center;
+}
+
+.pay-table tbody td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    vertical-align: middle;
+    transition: background 0.3s;
+}
+
+.pay-table tbody tr:hover td {
+    background: rgba(255,192,203,0.1);
+}
+
+/* Product image cell */
+.prod-image-cell img {
+    width: 60px;
+    height: 60px;
+    border-radius: 12px;
+    object-fit: cover;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.prod-image-cell img:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+}
+
+/* ===== Total Box ===== */
+.total {
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-align: right;
+    color: #b37a4c;
+    padding: 10px 0;
+}
+
+/* ===== Empty Message ===== */
+.empty-message {
+    text-align: center;
+    font-size: 1.5rem;
+    color: #d94a7a;
+    margin-top: 50px;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 1024px) {
+    .pay-table { font-size: 0.95rem; }
+    .prod-image-cell img { width: 50px; height: 50px; }
+}
+
+@media (max-width: 480px) {
+    .pay-table { font-size: 0.85rem; }
+    .container { padding: 15px 20px; }
+    .prod-image-cell img { width: 40px; height: 40px; }
+}
